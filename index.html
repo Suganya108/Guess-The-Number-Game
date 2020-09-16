@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Guess the number</title>
+</head>
+<body>
+<script>
+function game () {
+  o -= 1
+  let r = result.split('')
+  let num = document.getElementById('input').value
+  console.log('button works', num)
+  let arr = num.split('')
+  if (o > 0) {
+    for (var i = 0; i < 4; i++) {
+      let id = `${o}${i}`
+      console.log(`${o}${i}`, arr[i])
+      var x = document.getElementById(id.toString(2))
+      x.innerHTML = arr[i]
+      if (
+        (i === 0 && arr[0] == '5') ||
+        (i === 1 && arr[1] == '7') ||
+        (i === 2 && arr[2] == '3') ||
+        (i === 3 && arr[3] == '9')
+      ) {
+        x.style.background = '#55ed5f'
+        if (i == 3 && num == '5739') {
+          let h = document.createElement('H1')
+          h.innerHTML = `You Won!! Your score is ${o}`
+          document.body.appendChild(h)
+          break
+        }
+      } else if (
+        arr[i] == '5' ||
+        arr[i] == '7' ||
+        arr[i] == '3' ||
+        arr[i] == '9'
+      ) {
+        x.style.background = '#FDA66A'
+      } else x.style.background = '#FB0404'
+    }
+  } else {
+    let h = document.createElement('H1')
+    h.innerHTML = `You Lost!! Your score is 0`
+    document.body.appendChild(h)
+  }
+}
+var o = 6,
+  result = '5739'
+
+let ip = document.createElement('INPUT')
+ip.type = 'text'
+ip.id = 'input'
+let p = document.createElement('P')
+p.innerHTML = 'Enter Your Choice of guessed Number :'
+let but = document.createElement('BUTTON')
+but.innerHTML = 'Submit'
+but.onclick = game
+document.body.appendChild(p)
+document.body.appendChild(ip)
+document.body.appendChild(but)
+for (var i = 5; i > 0; i--) {
+  let d = document.createElement('DIV')
+  d.id = i
+  d.className = 'outer' + i
+  d.style.width = '10px'
+  d.style.height = '40px'
+  d.style.margin = '10px'
+  d.style.padding = '10px'
+  let n = 20
+  for (var j = 0; j < 4; j++) {
+    n += 60
+    let c = document.createElement('DIV')
+    c.id = i + '' + j
+    c.className = 'inner'
+    //c.innerHTML = j
+    c.style.borderRadius = '50%'
+    c.style.width = '20px'
+    c.style.height = '20px'
+    c.style.background = 'whitesmoke'
+    c.style.left = n + 'px'
+    c.style.padding = '10px'
+    c.style.margin = '10px'
+    c.style.border = '1px solid black'
+    c.style.float = 'left'
+    c.style.position = 'absolute'
+    c.style.display = 'inline-block'
+    d.appendChild(c)
+  }
+  document.body.appendChild(d)
+}
+
+</script>
+</body>
+</html>
