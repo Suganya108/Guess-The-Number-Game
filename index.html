@@ -44,7 +44,7 @@ function game() {
         x.style.background = '#FDA66A'
       } else x.style.background = '#FB0404'
     }
-  } else {
+  } if (o === 1 && num !== result) {
     let h = document.createElement('H1')
     h.innerHTML = `You Lost!! Your score is 0`
     document.body.appendChild(h)
